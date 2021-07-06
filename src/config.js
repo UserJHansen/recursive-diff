@@ -1,4 +1,4 @@
-const types = {
+export const types = {
   NUMBER: 'NUMBER',
   BOOLEAN: 'BOOLEAN',
   STRING: 'STRING',
@@ -12,12 +12,15 @@ const types = {
   DEFAULT: 'OBJECT',
 };
 
-module.exports = {
-  types,
-  iterableTypes: [types.ITERABLE_OBJECT, types.MAP, types.ARRAY, types.SET],
-  errors: {
+export const iterableTypes = [
+  types.ITERABLE_OBJECT, 
+  types.MAP, 
+  types.ARRAY, 
+  types.SET
+]
+
+export const errors = {
     EMPTY_DIFF: 'No diff object is provided, Nothing to apply',
     INVALID_DIFF_FORMAT: 'Invalid diff format',
     INVALID_DIFF_OP: 'Unsupported operation provided into diff object',
-  },
-};
+  }
