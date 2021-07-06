@@ -1,5 +1,5 @@
-const { types, iterableTypes, errors } = require('./config');
-const utils = require('./utils');
+import { types, iterableTypes, errors } from './config.js';
+import utils from './utils.js';
 
 const checkType = {
   [types.NUMBER]: utils.isNumber,
@@ -78,7 +78,7 @@ function makeDiff(x, y, op, path, keepOldVal) {
   return diffOb;
 }
 
-function privateGetDiff(x, y, keepOldVal, path, diff) {
+export function GetDiff(x, y, keepOldVal, path, diff) {
   const type1 = getType(x);
   const type2 = getType(y);
   const currPath = path || [];
@@ -92,7 +92,7 @@ function privateGetDiff(x, y, keepOldVal, path, diff) {
       } else if (!(Object.prototype.hasOwnProperty.call(y, value))) {
         currDiff.push(makeDiff(x[value], y[value], 'delete', currPath.concat(value), keepOldVal));
       } else {
-        privateGetDiff(x[value], y[value], keepOldVal, currPath.concat(value), currDiff);
+        GetDiff(x[value], y[value], keepOldVal, currPath.concat(value), currDiff);
       }
       const curr = iterator.next();
       value = curr.value;
@@ -113,7 +113,7 @@ const opHandlers = {
   delete: utils.deleteValueByPath,
 };
 
-function privateApplyDiff(x, diff, visitorCallback) {
+export function ApplyDiff(x, diff, visitorCallback) {
   if (!(diff instanceof Array)) throw new Error(errors.INVALID_DIFF_FORMAT);
   let y = x;
   diff.forEach((diffItem) => {
@@ -125,12 +125,3 @@ function privateApplyDiff(x, diff, visitorCallback) {
   });
   return y;
 }
-
-module.exports = {
-  getDiff(x, y, keepOldValInDiff = false) {
-    return privateGetDiff(x, y, keepOldValInDiff);
-  },
-  applyDiff(x, diff, visitorCallback) {
-    return privateApplyDiff(x, diff, visitorCallback);
-  },
-};
