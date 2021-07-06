@@ -67,3 +67,20 @@ export function deleteValueByPath(ob, path) {
   }
   return ob;
 }
+
+export default const utils = {
+  isNumber,
+  isBoolean,
+  isString,
+  isDate,
+  isUndefined,
+  isNull,
+  isArray,
+  isMap,
+  isSet,
+  isIterableObject,
+  noop,
+  areDatesEqual,
+  setValueByPath,
+  deleteValueByPath,
+}
