@@ -1,12 +1,6 @@
- [![NPM Version][npm-image]][npm-url]
-  [![NPM Downloads][downloads-image]][downloads-url]
-  [![Build][travis-image]][travis-url]
-  [![Coverage Status][coveralls-image]][coveralls-url]
-  [![Dependency Status](https://david-dm.org/cosmicanant/recursive-diff.svg)](https://david-dm.org/cosmicanant/recursive-diff)
+# Recursive-Diff-Deno
 
-# Recursive-Diff
-
-## A JavaScript library (with TypeScript support) to find diff between two JS Objects/Array, support for complex nested JS Objects
+## A Deno library to find diff between two JS Objects/Array, support for complex nested JS Objects
 
 * * *
 
