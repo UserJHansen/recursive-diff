@@ -68,7 +68,7 @@ export function deleteValueByPath(ob, path) {
   return ob;
 }
 
-export default utils = {
+const utils = {
   isNumber,
   isBoolean,
   isString,
@@ -84,3 +84,5 @@ export default utils = {
   setValueByPath,
   deleteValueByPath,
 }
+
+export default utils;
