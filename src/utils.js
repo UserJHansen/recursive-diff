@@ -1,23 +1,23 @@
-const instanceOf = (instance) => (x) => x instanceof instance;
+export const instanceOf = (instance) => (x) => x instanceof instance;
 
-const isNumber = (x) => typeof x === 'number';
-const isBoolean = (x) => typeof x === 'boolean';
-const isString = (x) => typeof x === 'string';
-const isDate = instanceOf(Date);
-const isUndefined = (x) => typeof x === 'undefined';
-const isNull = (x) => x === null;
-const isArray = instanceOf(Array);
-const isMap = instanceOf(Map);
-const isSet = instanceOf(Set);
-const isIterableObject = (x) => {
+export const isNumber = (x) => typeof x === 'number';
+export const isBoolean = (x) => typeof x === 'boolean';
+export const isString = (x) => typeof x === 'string';
+export const isDate = instanceOf(Date);
+export const isUndefined = (x) => typeof x === 'undefined';
+export const isNull = (x) => x === null;
+export const isArray = instanceOf(Array);
+export const isMap = instanceOf(Map);
+export const isSet = instanceOf(Set);
+export const isIterableObject = (x) => {
   const type = Object.prototype.toString.call(x);
   return type === '[object Object]';
 };
-const noop = () => {};
+export const noop = () => {};
 
-const areDatesEqual = (dt1, dt2) => dt1.getTime() === dt2.getTime();
+export const areDatesEqual = (dt1, dt2) => dt1.getTime() === dt2.getTime();
 
-function setValueByPath(x, path = [], value, visitorCallback) {
+export function setValueByPath(x, path = [], value, visitorCallback) {
   if (!(isArray(path))) {
     throw new Error(`Diff path: "${path}" is not valid`);
   }
@@ -43,7 +43,7 @@ function setValueByPath(x, path = [], value, visitorCallback) {
   return x;
 }
 
-function deleteValueByPath(ob, path) {
+export function deleteValueByPath(ob, path) {
   const keys = path || [];
   if (keys.length === 0) {
     return undefined;
@@ -67,20 +67,3 @@ function deleteValueByPath(ob, path) {
   }
   return ob;
 }
-
-module.exports = {
-  isNumber,
-  isBoolean,
-  isString,
-  isDate,
-  isUndefined,
-  isNull,
-  isArray,
-  isMap,
-  isSet,
-  isIterableObject,
-  noop,
-  areDatesEqual,
-  setValueByPath,
-  deleteValueByPath,
-};
