@@ -68,7 +68,7 @@ export function deleteValueByPath(ob, path) {
   return ob;
 }
 
-export default const utils = {
+export default utils = {
   isNumber,
   isBoolean,
   isString,
